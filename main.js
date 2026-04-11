@@ -200,7 +200,7 @@ const projectData = {
     title: 'Automatic vehicle using Raspberry pi',
     tags: ['Raspberry Pi', 'Python', 'OpenCV'],
     desc: 'Built a self-navigating vehicle using Raspberry Pi, integrating computer vision and sensor fusion. Implemented obstacle detection, lane following, and path planning algorithms for autonomous navigation in controlled environments.',
-    images: ['/images/ai1.jpg', '/images/ai2.jpg', '/images/ai3.jpg'],
+    images: ['./images/ai1.jpg', './images/ai2.jpg', './images/ai3.jpg'],
     process: [
       { t: 'Problem Analysis', d: 'Identified the need for autonomous navigation system.' },
       { t: 'System Architecture', d: 'Designed hardware & software architecture.' },
@@ -215,7 +215,7 @@ const projectData = {
     title: 'Black and White Image colorization',
     tags: ['Deep Learning', 'CNN', 'Python'],
     desc: 'Developed a deep learning model to automatically colorize black and white images using CNN architecture. Achieved realistic and context-aware color restoration through transfer learning.',
-    images: ['/images/bw1.jpg', '/images/bw2.jpg', '/images/bw3.jpeg'],
+    images: ['./images/bw1.jpg', './images/bw2.jpg', './images/bw3.jpeg'],
     process: [
       { t: 'Dataset Collection', d: 'Gathered historical B&W images and color counterparts.' },
       { t: 'Preprocessing', d: 'LAB color space conversion for better predictions.' },
