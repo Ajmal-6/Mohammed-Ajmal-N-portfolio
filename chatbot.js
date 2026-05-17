@@ -23,7 +23,7 @@ If a user asks a question, answer it based ONLY on this information. If you don'
 
 // Initialize the model
 const model = genAI.getGenerativeModel({
-  model: "gemini-2.5-flash", // Fast and capable model
+  model: "gemini-1.5-flash", // Fast and capable model
   systemInstruction: systemInstruction,
 });
 
