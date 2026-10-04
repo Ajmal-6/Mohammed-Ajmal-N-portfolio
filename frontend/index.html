@@ -6,8 +6,16 @@
     <title>Mohammed Ajmal N — AI Engineer Portfolio</title>
     <meta name="description" content="Portfolio of Mohammed Ajmal N — AI Engineer specializing in Healthcare AI at Curanova.AI, Deep Learning, and Full Stack Engineering." />
     
-    <link rel="icon" type="image/jpeg" href="/images/favicon.jpg" />
-    <link rel="apple-touch-icon" href="/images/favicon.jpg" />
+    <link rel="icon" type="image/png" href="/pwa-192x192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- PWA & Mobile Meta Tags -->
+    <meta name="theme-color" content="#07070e" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Ajmal AI" />
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,6 +24,15 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/portfolio.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(err => {
+            console.error('ServiceWorker registration failed: ', err);
+          });
+        });
+      }
+    </script>
   </body>
 </html>
 

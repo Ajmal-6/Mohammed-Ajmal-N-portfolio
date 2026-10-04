@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
-import { BrainCircuit, Menu, X } from 'lucide-react';
+import { BrainCircuit, Menu, X, Smartphone } from 'lucide-react';
 
 interface NavbarProps {
   onOpenChat: () => void;
@@ -9,6 +9,8 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ onOpenChat }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [installPrompt, setInstallPrompt] = useState<any>(null);
+  const [isInstalled, setIsInstalled] = useState(false);
   const { personal } = PORTFOLIO_DATA;
 
   useEffect(() => {
@@ -19,6 +21,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenChat }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleBeforeInstall = (e: Event) => {
+      e.preventDefault();
+      setInstallPrompt(e);
+    };
+    window.addEventListener('beforeinstallprompt', handleBeforeInstall);
+    window.addEventListener('appinstalled', () => {
+      setIsInstalled(true);
+      setInstallPrompt(null);
+    });
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstall);
+    };
+  }, []);
+
   const navLinks = [
     { label: 'About', href: '#about' },
     { label: 'Experience', href: '#experience' },
@@ -27,6 +44,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenChat }) => {
     { label: 'Education', href: '#education' },
     { label: 'Contact', href: '#contact' }
   ];
+
+  const handleInstallClick = async () => {
+    if (installPrompt) {
+      installPrompt.prompt();
+      const choiceResult = await installPrompt.userChoice;
+      if (choiceResult.outcome === 'accepted') {
+        setInstallPrompt(null);
+      }
+    } else {
+      alert("To install this app on your phone:\n\n• On Android (Chrome): Tap the top-right menu (⋮) and select 'Install app' or 'Add to Home screen'.\n• On iPhone (Safari): Tap the Share button (⎋) and select 'Add to Home Screen'.");
+    }
+  };
 
   return (
     <nav
@@ -164,13 +193,34 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenChat }) => {
               {link.label}
             </a>
           ))}
+
+          {!isInstalled && (
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                handleInstallClick();
+              }}
+              className="btn btn-outline"
+              style={{
+                width: '100%',
+                borderColor: 'var(--accent-cyan)',
+                color: 'var(--accent-cyan)',
+                background: 'rgba(0, 206, 201, 0.08)',
+                marginTop: '0.25rem'
+              }}
+            >
+              <Smartphone size={18} />
+              <span>Install App on Phone</span>
+            </button>
+          )}
+
           <button
             onClick={() => {
               setMobileMenuOpen(false);
               onOpenChat();
             }}
             className="btn btn-primary"
-            style={{ width: '100%', marginTop: '0.5rem' }}
+            style={{ width: '100%', marginTop: '0.25rem' }}
           >
             <BrainCircuit size={18} />
             <span>Chat with Ajmal's AI</span>
