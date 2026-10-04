@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg-primary: #07070e;
+  --bg-secondary: #0e0e1a;
+  --bg-card: rgba(18, 18, 30, 0.75);
+  --bg-card-hover: rgba(28, 28, 46, 0.9);
+  
+  --text-primary: #f8f8fc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #84849a;
+  
+  --accent-purple: #7c3aed;
+  --accent-cyan: #00cec9;
+  --accent-magenta: #c084fc;
+  --accent-blue: #38bdf8;
+  
+  --gradient-primary: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #00cec9 100%);
+  --gradient-glow: linear-gradient(135deg, rgba(124, 58, 237, 0.4), rgba(168, 85, 247, 0.4), rgba(0, 206, 201, 0.4));
+  
+  --border-color: rgba(255, 255, 255, 0.12);
+  --border-glow: rgba(124, 58, 237, 0.5);
+  --border-cyan: rgba(0, 206, 201, 0.45);
+  
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --nav-height: 72px;
+  --container-max: 1140px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-full: 9999px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: #07070e !important;
+  color: #f8f8fc !important;
+  font-family: var(--font-body);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-align: left !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+#root {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+  border: none !important;
+  background: transparent !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Headings High Contrast Bright White */
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff !important;
+  font-family: var(--font-heading) !important;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.1 !important;
+  margin: 0 0 1.25rem 0 !important;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 2.75rem) !important;
+  font-weight: 700 !important;
+  margin: 0 0 0.5rem 0 !important;
+}
+
+p {
+  color: var(--text-secondary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 10;
+  text-align: left;
+}
+
+/* Typography Utilities */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Glass Card */
+.glass-card {
+  background: var(--bg-card) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-md);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  background: var(--bg-card-hover) !important;
+  border-color: var(--border-glow) !important;
+  box-shadow: 0 0 35px rgba(124, 58, 237, 0.3);
+  transform: translateY(-4px);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.6rem !important;
+  padding: 0.75rem 1.6rem !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  border-radius: var(--radius-full) !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: all 0.25s ease !important;
+  border: none !important;
+}
+
+.btn-primary {
+  background: var(--gradient-primary) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.45) !important;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 28px rgba(0, 206, 201, 0.55) !important;
+  transform: translateY(-2px) !important;
+}
+
+.btn-outline {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+.btn-outline:hover {
+  background: rgba(0, 206, 201, 0.12) !important;
+  border-color: var(--accent-cyan) !important;
+  color: var(--accent-cyan) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Tags & Badges */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  background: rgba(124, 58, 237, 0.18);
+  color: #c4b5fd;
+  border: 1px solid rgba(124, 58, 237, 0.35);
+  font-family: var(--font-mono);
+}
+
+.tag-cyan {
+  background: rgba(0, 206, 201, 0.15);
+  color: #5eead4;
+  border-color: rgba(0, 206, 201, 0.35);
+}
+
+/* Section Common */
+.section-padding {
+  padding: 5.5rem 0;
+  position: relative;
+  z-index: 5;
+}
+
+.section-header {
+  margin-bottom: 3.5rem;
+}
+
+.section-num {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--accent-cyan);
+  margin-right: 0.5rem;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff !important;
+}
+
+/* Neural Network pulsating indicator */
+.neural-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 10px #10b981;
+  display: inline-block;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #080811;
+}
+::-webkit-scrollbar-thumb {
+  background: #252538;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-purple);
+}

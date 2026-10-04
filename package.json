@@ -1,0 +1,11 @@
+{
+  "name": "mohammed-ajmal-n-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio of Mohammed Ajmal N — AI Engineer specializing in Healthcare AI at Curanova.AI",
+  "scripts": {
+    "build": "npm run build --prefix frontend",
+    "dev": "npm run dev --prefix frontend",
+    "preview": "npm run preview --prefix frontend"
+  }
+}
