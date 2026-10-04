@@ -6,10 +6,10 @@
     <title>Mohammed Ajmal N — AI Engineer Portfolio</title>
     <meta name="description" content="Portfolio of Mohammed Ajmal N — AI Engineer specializing in Healthcare AI at Curanova.AI, Deep Learning, and Full Stack Engineering." />
     
-    <link rel="icon" type="image/jpeg" href="/images/favicon.jpg" />
-    <link rel="shortcut icon" href="/images/favicon.jpg" />
-    <link rel="apple-touch-icon" href="/images/favicon.jpg" />
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/jpeg" href="/images/favicon.jpg?v=3" />
+    <link rel="shortcut icon" href="/favicon.ico?v=3" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
+    <link rel="manifest" href="/manifest.json?v=3" />
     
     <!-- PWA & Mobile Meta Tags -->
     <meta name="theme-color" content="#07070e" />
@@ -28,7 +28,9 @@
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js').catch(err => {
+          navigator.serviceWorker.register('/sw.js').then((registration) => {
+            registration.update();
+          }).catch(err => {
             console.error('ServiceWorker registration failed: ', err);
           });
         });

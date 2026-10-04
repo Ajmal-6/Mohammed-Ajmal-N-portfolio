@@ -1,5 +1,5 @@
 // Service Worker for Mohammed Ajmal N Portfolio PWA
-const CACHE_NAME = 'ajmal-portfolio-v1';
+const CACHE_NAME = 'ajmal-portfolio-v3';
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',
@@ -7,7 +7,9 @@ const PRECACHE_ASSETS = [
   '/pwa-192x192.png',
   '/pwa-512x512.png',
   '/apple-touch-icon.png',
-  '/maskable-icon-512x512.png'
+  '/maskable-icon-512x512.png',
+  '/favicon.ico',
+  '/images/favicon.jpg'
 ];
 
 self.addEventListener('install', (event) => {
@@ -63,7 +65,7 @@ self.addEventListener('fetch', (event) => {
       })
       .catch(() => {
         // If network fails (e.g. offline), serve from cache
-        return caches.match(event.request).then((cachedResponse) => {
+        return caches.match(event.request, { ignoreSearch: true }).then((cachedResponse) => {
           if (cachedResponse) {
             return cachedResponse;
           }
