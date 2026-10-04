@@ -41,7 +41,7 @@ export const Contact: React.FC = () => {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
             gap: '3rem'
           }}
         >
@@ -157,7 +157,7 @@ export const Contact: React.FC = () => {
 
           {/* Contact Form */}
           <div
-            className="glass-card"
+            className="glass-card contact-form-card"
             style={{
               padding: '2.5rem',
               borderRadius: 'var(--radius-lg)'
@@ -324,7 +324,10 @@ export const Contact: React.FC = () => {
       </div>
 
       <style>{`
-        @media (max-width: 600px) {
+        @media (max-width: 640px) {
+          .contact-form-card {
+            padding: 1.35rem !important;
+          }
           .contact-form-grid {
             grid-template-columns: 1fr !important;
           }

@@ -71,17 +71,18 @@ h1, h2, h3, h4, h5, h6 {
   color: #ffffff !important;
   font-family: var(--font-heading) !important;
   letter-spacing: -0.02em;
+  overflow-wrap: break-word;
 }
 
 h1 {
-  font-size: clamp(2.5rem, 6vw, 4.5rem) !important;
+  font-size: clamp(2rem, 6vw, 4.2rem) !important;
   font-weight: 700 !important;
-  line-height: 1.1 !important;
+  line-height: 1.15 !important;
   margin: 0 0 1.25rem 0 !important;
 }
 
 h2 {
-  font-size: clamp(2rem, 4vw, 2.75rem) !important;
+  font-size: clamp(1.6rem, 4.5vw, 2.75rem) !important;
   font-weight: 700 !important;
   margin: 0 0 0.5rem 0 !important;
 }
@@ -93,6 +94,10 @@ p {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+img {
+  max-width: 100%;
 }
 
 .container {
@@ -143,6 +148,7 @@ a {
   cursor: pointer !important;
   transition: all 0.25s ease !important;
   border: none !important;
+  white-space: nowrap !important;
 }
 
 .btn-primary {
@@ -210,7 +216,7 @@ a {
 
 .section-title {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-size: clamp(1.8rem, 4vw, 2.75rem);
   font-weight: 700;
   letter-spacing: -0.02em;
   color: #ffffff !important;
@@ -246,4 +252,36 @@ a {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-purple);
+}
+
+/* ================= Mobile & Cross-device Media Queries ================= */
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 64px;
+  }
+  .section-padding {
+    padding: 3.5rem 0 !important;
+  }
+  .section-header {
+    margin-bottom: 2rem !important;
+  }
+  .container {
+    padding: 0 1.25rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem !important;
+  }
+  .section-padding {
+    padding: 3rem 0 !important;
+  }
+  .btn {
+    padding: 0.65rem 1.25rem !important;
+    font-size: 0.88rem !important;
+  }
+  .glass-card {
+    border-radius: var(--radius-md) !important;
+  }
 }

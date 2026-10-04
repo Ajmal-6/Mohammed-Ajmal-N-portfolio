@@ -33,14 +33,14 @@ export const Skills: React.FC = () => {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
             gap: '1.75rem'
           }}
         >
           {skills.map((category) => (
             <div
               key={category.title}
-              className="glass-card"
+              className="glass-card skill-card"
               style={{
                 padding: '2rem',
                 display: 'flex',
@@ -111,6 +111,14 @@ export const Skills: React.FC = () => {
           ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .skill-card {
+            padding: 1.35rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
-import { ArrowUp, Heart } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, InstagramIcon } from './SocialIcons';
 
 export const Footer: React.FC = () => {
@@ -15,7 +15,7 @@ export const Footer: React.FC = () => {
       style={{
         borderTop: '1px solid var(--border-color)',
         background: 'rgba(5, 5, 10, 0.95)',
-        padding: '3rem 0',
+        padding: '2.75rem 0',
         position: 'relative',
         zIndex: 1
       }}
@@ -26,8 +26,9 @@ export const Footer: React.FC = () => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: '1.5rem',
-          textAlign: 'center'
+          gap: '1.25rem',
+          textAlign: 'center',
+          position: 'relative'
         }}
       >
         {/* Social Icons */}
@@ -65,13 +66,8 @@ export const Footer: React.FC = () => {
         </div>
 
         <div>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-            Designed & Engineered with{' '}
-            <Heart size={14} color="#f43f5e" style={{ display: 'inline', verticalAlign: 'middle' }} /> by{' '}
-            <strong style={{ color: '#fff' }}>{personal.name}</strong>
-          </p>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '0.3rem' }}>
-            © {new Date().getFullYear()} — All rights reserved
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem' }}>
+            © {new Date().getFullYear()} {personal.name}. All rights reserved.
           </p>
         </div>
 
@@ -79,12 +75,14 @@ export const Footer: React.FC = () => {
         <button
           onClick={scrollToTop}
           aria-label="Scroll back to top"
+          className="footer-scroll-top"
           style={{
             position: 'absolute',
-            right: '2rem',
-            top: '2.5rem',
-            width: 40,
-            height: 40,
+            right: '1.5rem',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            width: 42,
+            height: 42,
             borderRadius: '50%',
             background: 'rgba(255, 255, 255, 0.05)',
             border: '1px solid var(--border-color)',
@@ -97,7 +95,7 @@ export const Footer: React.FC = () => {
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.borderColor = 'var(--accent-cyan)';
-            e.currentTarget.style.background = 'rgba(0, 206, 201, 0.1)';
+            e.currentTarget.style.background = 'rgba(0, 206, 201, 0.12)';
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.borderColor = 'var(--border-color)';
@@ -107,6 +105,16 @@ export const Footer: React.FC = () => {
           <ArrowUp size={18} />
         </button>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .footer-scroll-top {
+            position: static !important;
+            transform: none !important;
+            margin-top: 0.5rem;
+          }
+        }
+      `}</style>
     </footer>
   );
 };

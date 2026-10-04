@@ -8,7 +8,7 @@ import {
   Layers, 
   Code2, 
   Sparkles, 
-  Bot, 
+  BrainCircuit, 
   ArrowRight,
   Maximize2
 } from 'lucide-react';
@@ -158,7 +158,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({
                   color: 'var(--accent-cyan)'
                 }}
               >
-                <Bot size={18} color="var(--accent-cyan)" />
+                <BrainCircuit size={18} color="var(--accent-cyan)" />
                 <span>Ask AI About This Project</span>
               </button>
             )}
@@ -411,7 +411,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             {/* Project Metadata Card */}
             <div
-              className="glass-card"
+              className="glass-card project-spec-card"
               style={{
                 padding: '2rem',
                 borderRadius: 'var(--radius-lg)',
@@ -626,6 +626,11 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({
           .project-grid {
             grid-template-columns: 1fr !important;
             gap: 2.5rem !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .project-spec-card {
+            padding: 1.35rem !important;
           }
         }
       `}</style>

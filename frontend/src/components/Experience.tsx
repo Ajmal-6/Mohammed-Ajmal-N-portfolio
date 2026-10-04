@@ -14,6 +14,7 @@ export const Experience: React.FC = () => {
         </div>
 
         <div
+          className="experience-timeline"
           style={{
             position: 'relative',
             display: 'flex',
@@ -26,7 +27,7 @@ export const Experience: React.FC = () => {
           {experience.map((item) => (
             <div
               key={item.id}
-              className="glass-card"
+              className="glass-card experience-card"
               style={{
                 position: 'relative',
                 padding: '2rem',
@@ -35,6 +36,7 @@ export const Experience: React.FC = () => {
             >
               {/* Timeline Glowing Node Dot */}
               <div
+                className="experience-node-dot"
                 style={{
                   position: 'absolute',
                   top: '2.2rem',
@@ -151,6 +153,23 @@ export const Experience: React.FC = () => {
           ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .experience-timeline {
+            padding-left: 1.1rem !important;
+          }
+          .experience-node-dot {
+            left: -1.65rem !important;
+            width: 14px !important;
+            height: 14px !important;
+            top: 1.85rem !important;
+          }
+          .experience-card {
+            padding: 1.35rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

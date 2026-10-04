@@ -17,7 +17,7 @@ export const Education: React.FC = () => {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
             gap: '2rem',
             marginBottom: '3rem'
           }}
@@ -25,7 +25,7 @@ export const Education: React.FC = () => {
           {education.map((edu, idx) => (
             <div
               key={edu.degree}
-              className="glass-card"
+              className="glass-card education-card"
               style={{
                 padding: '2.25rem',
                 display: 'flex',
@@ -110,14 +110,14 @@ export const Education: React.FC = () => {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))',
               gap: '1.25rem'
             }}
           >
             {achievements.map((item) => (
               <div
                 key={item.title}
-                className="glass-card"
+                className="glass-card achievement-card"
                 style={{
                   padding: '1.5rem',
                   display: 'flex',
@@ -145,6 +145,24 @@ export const Education: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .education-card {
+            padding: 1.35rem !important;
+            gap: 1.1rem !important;
+          }
+          .achievement-card {
+            padding: 1.15rem !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .education-card {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

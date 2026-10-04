@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { sendChatMessage, getChatHistory } from '../services/api';
-import { Bot, X, Send, Sparkles, User, RefreshCw } from 'lucide-react';
+import { BrainCircuit, X, Send, User, RefreshCw } from 'lucide-react';
 
 interface ChatMessage {
   id: string;
@@ -140,10 +140,11 @@ export const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onToggle, onClose }) =
 
   return (
     <>
-      {/* Floating Toggle Button */}
+      {/* Floating Toggle Button with Professional AI Emblem */}
       <button
         onClick={onToggle}
-        aria-label="Open AI Assistant"
+        aria-label={isOpen ? "Close AI Assistant" : "Open AI Assistant"}
+        className="chatbot-trigger-btn"
         style={{
           position: 'fixed',
           bottom: '2rem',
@@ -152,11 +153,11 @@ export const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onToggle, onClose }) =
           width: 58,
           height: 58,
           borderRadius: '50%',
-          background: 'var(--gradient-primary)',
+          background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%)',
           color: '#fff',
-          border: 'none',
+          border: '1px solid rgba(255, 255, 255, 0.25)',
           cursor: 'pointer',
-          boxShadow: '0 8px 30px rgba(108, 92, 231, 0.45)',
+          boxShadow: '0 8px 30px rgba(99, 102, 241, 0.45), 0 0 20px rgba(6, 182, 212, 0.3)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -164,19 +165,38 @@ export const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onToggle, onClose }) =
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.transform = 'scale(1.08)';
-          e.currentTarget.style.boxShadow = '0 12px 35px rgba(0, 206, 201, 0.55)';
+          e.currentTarget.style.boxShadow = '0 12px 35px rgba(6, 182, 212, 0.6), 0 0 25px rgba(139, 92, 246, 0.5)';
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.transform = 'scale(1)';
-          e.currentTarget.style.boxShadow = '0 8px 30px rgba(108, 92, 231, 0.45)';
+          e.currentTarget.style.boxShadow = '0 8px 30px rgba(99, 102, 241, 0.45), 0 0 20px rgba(6, 182, 212, 0.3)';
         }}
       >
-        <Bot size={28} />
+        {isOpen ? (
+          <X size={24} />
+        ) : (
+          <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <BrainCircuit size={26} strokeWidth={2.2} />
+            <span
+              style={{
+                position: 'absolute',
+                top: -3,
+                right: -3,
+                width: 8,
+                height: 8,
+                borderRadius: '50%',
+                background: '#10b981',
+                boxShadow: '0 0 8px #10b981'
+              }}
+            />
+          </div>
+        )}
       </button>
 
       {/* Chat Window Modal */}
       {isOpen && (
         <div
+          className="chatbot-modal"
           style={{
             position: 'fixed',
             bottom: '5.5rem',
@@ -184,11 +204,11 @@ export const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onToggle, onClose }) =
             zIndex: 95,
             width: 'min(420px, calc(100vw - 2rem))',
             height: 'min(580px, calc(100vh - 7rem))',
-            background: 'rgba(12, 12, 22, 0.95)',
-            backdropFilter: 'blur(20px)',
+            background: 'rgba(12, 12, 22, 0.96)',
+            backdropFilter: 'blur(24px)',
             border: '1px solid var(--border-glow)',
             borderRadius: 'var(--radius-lg)',
-            boxShadow: '0 20px 60px rgba(0, 0, 0, 0.75)',
+            boxShadow: '0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(124, 58, 237, 0.25)',
             display: 'flex',
             flexDirection: 'column',
             overflow: 'hidden',
@@ -199,7 +219,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onToggle, onClose }) =
           <div
             style={{
               padding: '1rem 1.25rem',
-              background: 'rgba(18, 18, 32, 0.85)',
+              background: 'rgba(18, 18, 32, 0.9)',
               borderBottom: '1px solid var(--border-color)',
               display: 'flex',
               alignItems: 'center',
@@ -209,16 +229,17 @@ export const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onToggle, onClose }) =
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
               <div
                 style={{
-                  width: 32,
-                  height: 32,
-                  borderRadius: '50%',
-                  background: 'var(--gradient-primary)',
+                  width: 34,
+                  height: 34,
+                  borderRadius: '10px',
+                  background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center'
+                  justifyContent: 'center',
+                  boxShadow: '0 0 12px rgba(139, 92, 246, 0.4)'
                 }}
               >
-                <Sparkles size={16} color="#fff" />
+                <BrainCircuit size={18} color="#fff" />
               </div>
               <div>
                 <h4 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#fff', margin: 0 }}>
@@ -303,7 +324,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onToggle, onClose }) =
                       flexShrink: 0
                     }}
                   >
-                    {isUser ? <User size={14} color="var(--accent-cyan)" /> : <Bot size={14} color="var(--accent-purple)" />}
+                    {isUser ? <User size={14} color="var(--accent-cyan)" /> : <BrainCircuit size={14} color="var(--accent-purple)" />}
                   </div>
 
                   <div
@@ -338,7 +359,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onToggle, onClose }) =
                     justifyContent: 'center'
                   }}
                 >
-                  <Bot size={14} color="var(--accent-purple)" />
+                  <BrainCircuit size={14} color="var(--accent-purple)" />
                 </div>
                 <div
                   style={{
@@ -349,7 +370,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onToggle, onClose }) =
                     color: 'var(--text-secondary)'
                   }}
                 >
-                  Thinking...
+                  Analyzing query...
                 </div>
               </div>
             )}
@@ -455,6 +476,24 @@ export const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onToggle, onClose }) =
         @keyframes slideUp {
           from { opacity: 0; transform: translateY(12px) scale(0.98); }
           to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @media (max-width: 640px) {
+          .chatbot-trigger-btn {
+            bottom: 1.25rem !important;
+            right: 1.25rem !important;
+            width: 52px !important;
+            height: 52px !important;
+          }
+          .chatbot-modal {
+            bottom: 1rem !important;
+            right: 0.75rem !important;
+            left: 0.75rem !important;
+            width: auto !important;
+            max-width: calc(100vw - 1.5rem) !important;
+            height: calc(100vh - 2rem) !important;
+            max-height: 94vh !important;
+            border-radius: 18px !important;
+          }
         }
       `}</style>
     </>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
-import { Bot, Menu, X } from 'lucide-react';
+import { BrainCircuit, Menu, X } from 'lucide-react';
 
 interface NavbarProps {
   onOpenChat: () => void;
@@ -110,7 +110,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenChat }) => {
               borderRadius: 'var(--radius-full)'
             }}
           >
-            <Bot size={16} color="var(--accent-cyan)" />
+            <BrainCircuit size={16} color="var(--accent-cyan)" />
             <span>Ask AI</span>
           </button>
         </div>
@@ -172,7 +172,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenChat }) => {
             className="btn btn-primary"
             style={{ width: '100%', marginTop: '0.5rem' }}
           >
-            <Bot size={18} />
+            <BrainCircuit size={18} />
             <span>Chat with Ajmal's AI</span>
           </button>
         </div>

@@ -29,7 +29,7 @@ export const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
             gap: '2.5rem'
           }}
         >
@@ -85,6 +85,7 @@ export const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
 
               {/* Content */}
               <div
+                className="project-card-body"
                 style={{
                   padding: '2rem',
                   display: 'flex',
@@ -222,6 +223,14 @@ export const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
           ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .project-card-body {
+            padding: 1.35rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

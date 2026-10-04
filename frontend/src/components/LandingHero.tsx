@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
-import { Download, Mail, Bot, ArrowDown, Sparkles } from 'lucide-react';
+import { Download, Mail, BrainCircuit, ArrowDown, Sparkles } from 'lucide-react';
 
 interface LandingHeroProps {
   onOpenChat: () => void;
@@ -150,11 +150,12 @@ export const LandingHero: React.FC<LandingHeroProps> = ({ onOpenChat }) => {
 
             {/* CTAs */}
             <div
+              className="hero-cta-group"
               style={{
                 display: 'flex',
                 flexWrap: 'wrap',
                 gap: '0.85rem',
-                marginBottom: '2.75rem'
+                marginBottom: '2.5rem'
               }}
             >
               <a
@@ -180,13 +181,14 @@ export const LandingHero: React.FC<LandingHeroProps> = ({ onOpenChat }) => {
                   color: 'var(--accent-cyan)'
                 }}
               >
-                <Bot size={18} color="var(--accent-cyan)" />
+                <BrainCircuit size={18} color="var(--accent-cyan)" />
                 <span>Ask AI</span>
               </button>
             </div>
 
             {/* Stats Counter */}
             <div
+              className="hero-stats-grid"
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(3, 1fr)',
@@ -205,6 +207,7 @@ export const LandingHero: React.FC<LandingHeroProps> = ({ onOpenChat }) => {
                   }}
                 >
                   <span
+                    className="hero-stats-number"
                     style={{
                       fontFamily: 'var(--font-heading)',
                       fontSize: '1.9rem',
@@ -215,6 +218,7 @@ export const LandingHero: React.FC<LandingHeroProps> = ({ onOpenChat }) => {
                     <span className="gradient-text">{stat.number}</span>
                   </span>
                   <span
+                    className="hero-stats-label"
                     style={{
                       fontSize: '0.82rem',
                       color: 'var(--text-secondary)'
@@ -230,7 +234,7 @@ export const LandingHero: React.FC<LandingHeroProps> = ({ onOpenChat }) => {
           {/* ================= RIGHT: ABOUT ME CARD ================= */}
           <div>
             <div
-              className="glass-card"
+              className="glass-card hero-about-card"
               style={{
                 padding: '2.25rem',
                 display: 'flex',
@@ -362,6 +366,7 @@ export const LandingHero: React.FC<LandingHeroProps> = ({ onOpenChat }) => {
       {/* Explore indicator */}
       <a
         href="#experience"
+        className="hero-explore-indicator"
         style={{
           position: 'absolute',
           bottom: '1.25rem',
@@ -391,7 +396,46 @@ export const LandingHero: React.FC<LandingHeroProps> = ({ onOpenChat }) => {
         @media (max-width: 1024px) {
           .hero-about-grid {
             grid-template-columns: 1fr !important;
-            gap: 3rem !important;
+            gap: 2.5rem !important;
+          }
+          .hero-explore-indicator {
+            display: none !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .hero-about-card {
+            padding: 1.35rem !important;
+          }
+          .hero-stats-grid {
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 0.5rem !important;
+          }
+          .hero-stats-grid .glass-card {
+            padding: 0.75rem 0.5rem !important;
+            text-align: center !important;
+          }
+          .hero-stats-number {
+            font-size: 1.35rem !important;
+          }
+          .hero-stats-label {
+            font-size: 0.72rem !important;
+          }
+        }
+        @media (max-width: 440px) {
+          .hero-cta-group {
+            flex-direction: column !important;
+            width: 100% !important;
+          }
+          .hero-cta-group .btn {
+            width: 100% !important;
+          }
+          .hero-stats-grid {
+            grid-template-columns: 1fr !important;
+            gap: 0.65rem !important;
+          }
+          .hero-stats-grid .glass-card {
+            padding: 0.85rem 1rem !important;
+            text-align: left !important;
           }
         }
       `}</style>
